@@ -1,12 +1,12 @@
 IMAGE_NAME:=jecklgamis/gatling-java-example
-IMAGE_TAG:=latest
+IMAGE_TAG:=$(shell git rev-parse HEAD)
 
 default:
 	cat ./Makefile
 dist:
 	./mvnw clean package
 image:
-	 docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
+	 docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
 run-bash:
 	 docker run -i -t $(IMAGE_NAME):$(IMAGE_TAG) /bin/bash
 run:
