@@ -62,9 +62,9 @@ jobs:
           find . -name Dockerfile -type f -exec sed -i "s/jecklgamis@gmail.com/user@some-domain/g" {} +
 
           # Copy content
-          mkdir -p src/main/scala/${GROUP//.//}
+          mkdir -p src/main/java/${GROUP//.//}
           cp -R .github/template-files/* .
-          cp -R src/main/scala/gatling/test/example/* src/main/scala/${GROUP//.//}/
+          cp -R src/main/java/gatling/test/example/* src/main/java/${GROUP//.//}/
 
           # Clean up
           rm -rf \
@@ -73,7 +73,7 @@ jobs:
             .github/template-files \
             .github/workflows/template.yml \
             .idea/icon.png \
-            src/main/scala/gatling \
+            src/main/java/gatling \
             LICENSE \
             package-artifacts.sh \
             submit*.sh \
