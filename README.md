@@ -29,7 +29,7 @@ Using the Docker container (`run-simulation-using-docker.sh`):
 ```bash
 docker build -t gatling-java-example:latest .
 docker run -e "JAVA_OPTS=-DbaseUrl=http://some-target-host:8080 -DdurationMin=1 -DrequestPerSecond=10" \
--e SIMULATION_NAME=gatling.test.example.simulation.ExampleSimulation $(IMAGE_NAME):$(IMAGE_TAG)
+-e SIMULATION_NAME=gatling.test.example.simulation.ExampleSimulation gatling-java-example:latest
 ```
 
 ## Working With Makefile
