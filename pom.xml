@@ -11,43 +11,11 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <properties>
-        <gatling.version>3.7.3</gatling.version>
-        <simulationClass>gatling.test.example.simulation.ExampleSimulation</simulationClass>
-    </properties>
-
     <dependencies>
-        <dependency>
-            <groupId>io.gatling</groupId>
-            <artifactId>gatling-core</artifactId>
-            <version>${gatling.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.gatling</groupId>
-            <artifactId>gatling-http</artifactId>
-            <version>${gatling.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.gatling</groupId>
-            <artifactId>gatling-charts</artifactId>
-            <scope>runtime</scope>
-            <version>${gatling.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.gatling</groupId>
-            <artifactId>gatling-metrics</artifactId>
-            <version>2.3.1</version>
-        </dependency>
         <dependency>
             <groupId>io.gatling.highcharts</groupId>
             <artifactId>gatling-charts-highcharts</artifactId>
-            <scope>runtime</scope>
-            <version>${gatling.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.gatling</groupId>
-            <artifactId>gatling-app</artifactId>
-            <version>${gatling.version}</version>
+            <version>3.9.0</version>
         </dependency>
     </dependencies>
 
@@ -65,7 +33,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.10.1</version>
                 <configuration>
                     <target>1.8</target>
                     <source>1.8</source>
@@ -74,7 +42,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.4.1</version>
                 <configuration>
                     <finalName>${project.name}</finalName>
                     <createDependencyReducedPom>true</createDependencyReducedPom>
@@ -98,36 +66,17 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>4.2.9</version>
+                <configuration>
+                    <simulationsFolder>src/main/java</simulationsFolder>
+                    <runMultipleSimulations>false</runMultipleSimulations>
+                    <simulationClass>gatling.test.example.simulation.ExampleSimulation</simulationClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>perf-test</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>io.gatling</groupId>
-                        <artifactId>gatling-maven-plugin</artifactId>
-                        <version>4.0.1</version>
-                        <configuration>
-                            <simulationsFolder>src/main/java</simulationsFolder>
-                            <runMultipleSimulations>false</runMultipleSimulations>
-                            <simulationClass>${simulationClass}</simulationClass>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>run-on-test</id>
-                                <phase>test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
