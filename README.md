@@ -4,10 +4,15 @@
 
 An example Gatling Maven project using Java DSL.
 
+## Requirements
+
+* Java 8
+
 ## Building
 
 ```
 mvn clean package
+docker build -t gatling-java-example:main .
 ```
 
 ## Running
@@ -23,28 +28,14 @@ java ${JAVA_OPTS} -cp target/gatling-java-example.jar io.gatling.app.Gatling -s 
 Using the Gatling Maven plugin (`run-simulation-using-plugin.sh`):
 
 ```bash
-mvn test -Pperf-test
+./mvnw -DsimulationClass=gatling.test.example.simulation.ExampleSimulation gatling:test
 ```
 
 Using the Docker container (`run-simulation-using-docker.sh`):
 
 ```bash
 docker build -t gatling-java-example:latest .
-docker run -e "JAVA_OPTS=-DbaseUrl=http://some-target-host:8080 -DdurationMin=1 -DrequestPerSecond=10" \
+docker run -e "JAVA_OPTS=-DbaseUrl=http://localhost:8080 -DdurationMin=1 -DrequestPerSecond=10" \
 -e SIMULATION_NAME=gatling.test.example.simulation.ExampleSimulation gatling-java-example:latest
-```
-
-## Working With Makefile
-
-Build executable jar and Docker image
-
-```
-make dist image
-```
-
-Run Docker image:
-
-```
-make run
 ```
 

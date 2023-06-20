@@ -1,21 +1,20 @@
-FROM openjdk:8-jre-alpine
+FROM amd64/eclipse-temurin:8-jre-jammy
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
-RUN apk update && apk add bash curl
+RUN apt update -y && apt install -y bash curl && apt clean all && rm -rf /var/lib/apt/lists/*
 
 ENV APP_HOME /app
 RUN mkdir -m 0755 -p ${APP_HOME}/bin
 
 COPY target/gatling-java-example.jar ${APP_HOME}/bin/
-COPY docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
 
-RUN addgroup -S gatling && adduser -S gatling -G gatling
+RUN groupadd -r gatling && useradd -r -ggatling gatling
 RUN chown -R gatling:gatling ${APP_HOME}
 RUN chown gatling:gatling /docker-entrypoint.sh
 
 USER gatling
 WORKDIR ${APP_HOME}
 
+COPY docker-entrypoint.sh /
 CMD ["/docker-entrypoint.sh"]
 
