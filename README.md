@@ -39,3 +39,12 @@ docker run -e "JAVA_OPTS=-DbaseUrl=http://localhost:8080 -DdurationMin=1 -Dreque
 -e SIMULATION_NAME=gatling.test.example.simulation.ExampleSimulation gatling-java-example:latest
 ```
 
+As Kubernetes Job:
+* Ensure you have [Helm](https://helm.sh/) installed and can deploy to a Kubernetes cluster locally.
+```bash
+cd deployment/k8s/helm
+make package install
+```
+
+
+
