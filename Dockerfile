@@ -10,7 +10,6 @@ COPY target/gatling-java-example.jar ${APP_HOME}/bin/
 
 RUN groupadd -r gatling && useradd -r -ggatling gatling
 RUN chown -R gatling:gatling ${APP_HOME}
-RUN chown gatling:gatling /docker-entrypoint.sh
 
 USER gatling
 WORKDIR ${APP_HOME}
