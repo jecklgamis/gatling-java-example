@@ -10,7 +10,7 @@ An example Gatling Maven project using Java DSL.
 ## Building
 
 ```
-mvn clean package
+./mvnw clean package
 docker build -t gatling-java-example:main .
 ```
 
