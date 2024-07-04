@@ -1,4 +1,4 @@
-FROM amd64/eclipse-temurin:8-jre-jammy
+FROM amd64/eclipse-temurin:21-jre-jammy
 MAINTAINER Jerrico Gamis <jecklgamis@gmail.com>
 
 RUN apt update -y && apt install -y bash curl && apt clean all && rm -rf /var/lib/apt/lists/*
