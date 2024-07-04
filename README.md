@@ -11,7 +11,6 @@ An example Gatling Maven project using Java DSL.
 
 ```
 ./mvnw clean package
-docker build -t gatling-java-example:main .
 ```
 
 ## Running
@@ -33,6 +32,7 @@ Using the Gatling Maven plugin (`run-simulation-using-plugin.sh`):
 Using the Docker container (`run-simulation-using-docker.sh`):
 
 ```bash
+./mvnw clean package
 docker build -t gatling-java-example:main .
 docker run -e "JAVA_OPTS=-DbaseUrl=http://localhost:8080 -DdurationMin=1 -DrequestPerSecond=10" \
 -e SIMULATION_NAME=gatling.test.example.simulation.ExampleSimulation gatling-java-example:main
