@@ -5,7 +5,7 @@
 An example Gatling Maven project using Java DSL.
 
 ## Requirements
-* Java 21
+* Java 25
 
 ## Building
 
