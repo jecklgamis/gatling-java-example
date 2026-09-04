@@ -4,7 +4,7 @@ LABEL maintainer="Jerrico Gamis <jecklgamis@gmail.com>"
 RUN apt update -y && apt install -y bash curl && apt clean all && rm -rf /var/lib/apt/lists/*
 
 ENV APP_HOME=/app
-RUN mkdir -m 0755 -p ${APP_HOME}/bin
+RUN mkdir -m 0755 -p ${APP_HOME}/bin ${APP_HOME}/.java
 
 COPY target/gatling-java-example.jar ${APP_HOME}/bin/
 
