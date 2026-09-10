@@ -1,0 +1,5 @@
+{
+  "simulation": "gatling.test.example.simulation.ExampleSimulation",
+  "javaOpts": "-DbaseUrl=http://localhost:8080 -DdurationMin=0.25 -DrequestPerSecond=10",
+  "url": "http://localhost:58080/uploads/30c3004f-4832-44d2-8712-747c87962759/gatling-java-example.jar"
+}
