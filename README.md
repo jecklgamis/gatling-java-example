@@ -4,6 +4,10 @@
 
 An example Gatling Maven project using Java DSL.
 
+No server to test against? Point `baseUrl` at [http-sink](https://github.com/jecklgamis/http-sink) — run it locally
+(`docker run --name http-sink -p 38080:38080 -it jecklgamis/http-sink:main`) or use the live instance at
+https://http-sink.jecklgamis.com.
+
 ## Requirements
 * Java 25
 
